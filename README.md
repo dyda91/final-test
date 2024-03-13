@@ -16,14 +16,14 @@ No README.md do projeto voces encontraram as intrujões para poderem conseguir c
 
 **O seu objetivo será:**
 
-- Fazer que os testes voltem a ser executados; 
-- Resolver todos os testes que estão falhando; 
-- Implementar todos os testes que não foram implementados e estão indicados como Todo.
-- Implementar as seguintes novas funcionalidades utilizando TDD:
+- Fazer que os testes voltem a ser executados;  ========= ok
+- Resolver todos os testes que estão falhando; ========= ok
+- Implementar todos os testes que não foram implementados e estão indicados como Todo. 
+- Implementar as seguintes novas funcionalidades utilizando TDD: 
   
-  - Consulta para obter todos os usuários cadastrados (ReadUsersController.list) - seguindo os requisitos [consultar lista de usuários](#get-v1users)
-  - Atualizar os dados de um usuário (UpdateUsersController.update) - seguindo os requisitos [atualizar usuário](#put-v1usersid)
-  - Atualização de um aluguel de livros (UpdateBooksRentalController.update) - seguindo os requisitos [atualizar aluguel de livro](#put-v1rentalbooksid);
+  - Consulta para obter todos os usuários cadastrados (ReadUsersController.list) - seguindo os requisitos [consultar lista de usuários](#get-v1users) ======== ok
+  - Atualizar os dados de um usuário (UpdateUsersController.update) - seguindo os requisitos [atualizar usuário](#put-v1usersid) ======== ok
+  - Atualização de um aluguel de livros (UpdateBooksRentalController.update) - seguindo os requisitos [atualizar aluguel de livro](#put-v1rentalbooksid); ======== ok
 
 **Critérios de avaliação:**
 
