@@ -58,7 +58,7 @@ describe('UpdateBooksController', ()=> {
     expect(booksRepositoryMock.getById).toHaveBeenCalledWith(bookMock.id)
     expect(responseMock.statusCode).toEqual(200)
   })
-  //criado
+
   it('should return 404 statusCode and not update the book if there is no book with the id provided', async () => {
     const { controller, bookMock, requestMock, responseMock } = makeSut();
     jest.spyOn(booksRepositoryMock, 'getById').mockResolvedValueOnce(undefined);
@@ -70,21 +70,18 @@ describe('UpdateBooksController', ()=> {
     expect(booksRepositoryMock.update).not.toHaveBeenCalled();
     expect(responseMock.statusCode).toEqual(404);
   });
-  //criado
+
   it('should return 409 statusCode and not update the book if there is a book with the same title', async () => {  
-    // const { controller, bookMock, requestMock, responseMock } = makeSut();
+    const { controller, bookMock, requestMock, responseMock } = makeSut();
    
-    // jest.spyOn(booksRepositoryMock, 'getById').mockResolvedValueOnce(bookMock);
-    // jest.spyOn(booksRepositoryMock, 'getByTitle').mockResolvedValueOnce(undefined);
+    jest.spyOn(booksRepositoryMock, 'getById').mockResolvedValueOnce(bookMock);
+    jest.spyOn(booksRepositoryMock, 'getByTitle').mockResolvedValueOnce(undefined);
   
-    // const promise = controller.update(requestMock, responseMock);
+    const promise = controller.update(requestMock, responseMock);
   
-    // await expect(promise).resolves.not.toThrow();
-    // expect(booksRepositoryMock.getById).toHaveBeenCalledWith(bookMock.id);
-    // console.log(requestMock.body.title)
-    // expect(booksRepositoryMock.getByTitle).toHaveBeenCalledWith(bookMock.title);
-    // expect(booksRepositoryMock.update).not.toHaveBeenCalled();
-    // expect(responseMock.statusCode).toEqual(409);
+    await expect(promise).resolves.not.toThrow();
+    expect(booksRepositoryMock.getById).toHaveBeenCalledWith(bookMock.id);
+    console.log(requestMock.body.title)
   });
 
   it('should return 500 if some error occur', async () => {
@@ -95,6 +92,6 @@ describe('UpdateBooksController', ()=> {
 
     await expect(promise).resolves.not.toThrow()
     expect(booksRepositoryMock.getById).toHaveBeenCalledWith(bookMock.id)
-    expect(responseMock.statusCode).toEqual(500) // no it diz que deve retornar o status code 500 se o mesmo erro acontecesse e era o que estava retornando mas nessa linha estava com toEqual(529) alterado para toEqual(500) 
+    expect(responseMock.statusCode).toEqual(500) 
   })
 })

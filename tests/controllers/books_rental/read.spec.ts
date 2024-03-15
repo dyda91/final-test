@@ -84,8 +84,28 @@ describe('ReadBooksRentalController', ()=> {
   })
 
   describe('list', () => {
-    it.todo('should return the list of books rental')
+    it('should return the list of books rental', async () => {
+      const { controller, responseMock, requestMock } = makeSut();
+      const booksRentalList: BooksRental[] = [
+        { id: fakerEN.string.uuid(), book_id: fakerEN.string.uuid(), user_id: fakerEN.string.uuid(), rented_at: fakerEN.date.anytime(), rental_time: fakerEN.date.anytime() },
+        { id: fakerEN.string.uuid(), book_id: fakerEN.string.uuid(), user_id: fakerEN.string.uuid(), rented_at: fakerEN.date.anytime(), rental_time: fakerEN.date.anytime() }
+      ];
+      jest.spyOn(booksRentalRepositoryMock, 'list').mockResolvedValueOnce(booksRentalList);
 
-    it.todo('should return 500 if some error occur')
-  })
+      const promise = controller.list(requestMock, responseMock);
+
+      await expect(promise).resolves.not.toThrow();
+      expect(responseMock.statusCode).toEqual(200);
+    });
+
+    it('should return 500 if some error occur', async () => {
+      const { controller, responseMock, requestMock } = makeSut();
+      jest.spyOn(booksRentalRepositoryMock, 'list').mockRejectedValueOnce(new Error('some error'));
+
+      const promise = controller.list(requestMock, responseMock);
+
+      await expect(promise).resolves.not.toThrow();
+      expect(responseMock.statusCode).toEqual(500);
+    });
+  });
 })

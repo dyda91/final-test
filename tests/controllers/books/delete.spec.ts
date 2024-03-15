@@ -56,7 +56,7 @@ describe('DeleteBooksController', ()=> {
 
     await expect(promise).resolves.not.toThrow()
     expect(booksRepositoryMock.getById).toHaveBeenCalledWith(bookMock.id)
-    expect(booksRepositoryMock.delete).toHaveBeenCalledWith(bookMock.id) //fiz uma alteração para que seja deletado pelo id e não pelo nome do livro
+    expect(booksRepositoryMock.delete).toHaveBeenCalledWith(bookMock.id) 
     expect(responseMock.statusCode).toEqual(200)
   })
 
